@@ -1,0 +1,25 @@
+{
+  "name": "ipo-reform-website",
+  "version": "1.0.0",
+  "description": "金融業IPO責任額研究網站",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server . -c-1 -p 8080",
+    "format": "prettier --write *.html assets/*.css assets/*.js",
+    "lint:html": "htmlhint index.html",
+    "lint:css": "stylelint assets/*.css --fix",
+    "lint:js": "eslint assets/*.js --fix",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "htmlhint": "^1.1.4",
+    "http-server": "^14.1.1",
+    "prettier": "^2.8.8",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard": "^33.0.0"
+  },
+  "dependencies": {}
+}

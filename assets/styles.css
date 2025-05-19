@@ -1,0 +1,327 @@
+/* 核心樣式 */
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* 區塊樣式 */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.glass-card-dark {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.intense-card {
+  background: rgba(239, 68, 68, 0.05);
+  backdrop-filter: blur(8px);
+  border-left: 4px solid #ef4444;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.intense-card:hover {
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15);
+  transform: translateY(-5px) scale(1.01);
+}
+
+.pressure-card {
+  background: rgba(59, 130, 246, 0.05);
+  backdrop-filter: blur(8px);
+  border-left: 4px solid #3b82f6;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pressure-card:hover {
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+  transform: translateY(-5px) scale(1.01);
+}
+
+.anxiety-card {
+  background: rgba(126, 34, 206, 0.05);
+  backdrop-filter: blur(8px);
+  border-left: 4px solid #7e22ce;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.anxiety-card:hover {
+  box-shadow: 0 10px 25px rgba(126, 34, 206, 0.15);
+  transform: translateY(-5px) scale(1.01);
+}
+
+/* 現代化卡片 */
+.modern-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.modern-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  transition: background-position 0.7s ease-in-out;
+  pointer-events: none;
+}
+
+.modern-card:hover::after {
+  background-position: 100% 0;
+}
+
+/* 進度指示器 */
+.scroll-indicator {
+  height: 4px;
+  background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
+  width: 0%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: width 0.2s ease-out;
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.5);
+}
+
+/* 引言卡片 */
+.quote-card {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.quote-card::before {
+  content: "\201C";
+  position: absolute;
+  top: -1rem;
+  left: -0.5rem;
+  font-size: 5rem;
+  color: rgba(59, 130, 246, 0.1);
+  font-family: Georgia, serif;
+  transition: all 0.3s ease;
+}
+
+.quote-card:hover::before {
+  transform: translate(0.3rem, 0.3rem) rotate(5deg);
+  color: rgba(59, 130, 246, 0.15);
+}
+
+.quote-card:hover {
+  transform: translateY(-5px);
+}
+
+/* 初始隱藏用於滾動觸發動畫 */
+.hidden-initially {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* 雷達圖樣式 */
+.radar-chart {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.radar-chart-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.radar-chart-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1.8s ease-in-out forwards;
+  filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.5));
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 背景動畫 */
+.moving-bg {
+  background: linear-gradient(120deg, #f0f9ff, #e0f2fe, #bae6fd, #ede9fe);
+  background-size: 400% 400%;
+  animation: moving-bg-animation 25s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.moving-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(100, 116, 139, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(14, 165, 233, 0.08) 0%,
+      transparent 50%
+    );
+}
+
+@keyframes moving-bg-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 捲動指示器 */
+.scroll-down-indicator {
+  animation: scroll-down 2s ease-in-out infinite;
+  position: relative;
+}
+
+.scroll-down-indicator::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.1) 0%,
+    transparent 70%
+  );
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes scroll-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Shimmer 效果 */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 手機優化 */
+@media (max-width: 768px) {
+  .emotion-tag {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .typewriter {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+  }
+
+  .glass-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* CSV 數據表格樣式 */
+.csv-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+}
+
+.csv-table th,
+.csv-table td {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.csv-table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.csv-table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.csv-table tr:hover {
+  background-color: #f3f4f6;
+}
+
+.csv-container {
+  overflow-x: auto;
+  max-width: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
